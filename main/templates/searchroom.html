@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content%}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 left-card">
+                <img src="Merchant_re4.jpg" 
+                alt="user" width="100"> <!-- รูป profile ของ user คนนั้นๆ -->
+                <h4>Status</span></h4> 
+                 <p>Hotel Guest</p>
+            </div>
+            <div class="col-8">
+                <div class="info">
+                    <h3>User Information</h3>
+                    <div class="info_data">
+                         <div class="data">
+                          <h4>Name</h4>
+                          <p><span id="result-name"></span></p>  <!-- username โดยที่ link จากข้อมูลที่ login ในเวลานั้นๆ (ตอนนี้ link จาก index.html) -->
+                         </div>
+                         <div class="data">
+                          <h4>E-mail</h4>
+                          <p><span id="result-email"></span></p>  <!-- E-mail โดยที่ link จากข้อมูลที่ login ในเวลานั้นๆ (ตอนนี้ link จาก index.html) -->
+                       </div>
+                         <div class="data">
+                           <h4>Phone</h4>
+                            <p>0924637761</p> <!-- หมายเลขโทรศัพท์ โดยที่ link จากข้อมูลที่ login ในเวลานั้นๆ  -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="wrapper">
+            <div class="left">
+                <img src="Merchant_re4.jpg" 
+                alt="user" width="100"> 
+                <h4>Status</span></h4> 
+                 <p>Hotel Guest</p>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <h3>User Information</h3>
+                    <div class="info_data">
+                         <div class="data">
+                          <h4>Name</h4>
+                          <p><span id="result-name"></span></p> 
+                         </div>
+                         <div class="data">
+                          <h4>E-mail</h4>
+                          <p><span id="result-email"></span></p>  
+                       </div>
+                         <div class="data">
+                           <h4>Phone</h4>
+                            <p>0924637761</p> 
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <br>
+        <form action='searchroom' method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">เบอร์มือถือ</span>
+                        <input type="text" class="form-control" placeholder="Phone" name ='userphone' aria-label="Phone" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                </div>
+            </div> 
+        </form>
+        <br>
+        {% if press == 1%}
+            {{user}}
+            {{userphone}}
+            {{typeroom}}
+            {{numroom}}
+            {{dayin}}
+            -
+            {{dayout}}
+        {% elif press == 2%}
+            {{notfound}}
+        {% endif %}
+    </div>
+
+
+{% endblock%}
